@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎮 InBlack - Game Topping Mobile Application
 
-## Getting Started
+แอปพลิเคชันจำลองการเติมเกมและการจัดการธุรกรรมสำหรับเกมเมอร์ (FinTech x Gaming) ออกแบบโครงสร้างระบบด้วยแนวคิดความร่วมมือระหว่างนักพัฒนาและปัญญาประดิษฐ์ (AI-Assisted Development Approach) ภายใต้ข้อจำกัดด้านเวลา เพื่อสร้างสถาปัตยกรรมซอฟต์แวร์ที่สะอาด ปลอดภัย และได้มาตรฐานสากล
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎨 Design System & Theme Specifications
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+โครงสร้างสไตล์และการควบคุมหน้าตา (UI) ถูกกำหนดไว้ที่ศูนย์กลางผ่านฟีเจอร์ `@theme` บนระบบ **Tailwind CSS v4** ล่าสุด เพื่อความคล่องตัวในการขยายระบบ (Scalability) และง่ายต่อการปรับเปลี่ยนสไตล์ในอนาคต
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 1. Color Palette (ชุดสีระบบ)
+การจัดสรรกลุ่มสีถูกแบ่งตามหน้าที่และระดับความสำคัญเพื่อสร้างลำดับสายตา (Visual Hierarchy) ที่ดี:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+*   **Brand Identity (กลุ่มสีหลักประจำแอป):**
+    *   `--color-brand-red` (`#e11d48`): สีแดงหลักประจำแอป ใช้กับโลโก้ ปุ่มปฏิบัติการหลัก (Primary Action) และจุดเน้นย้ำสายตา
+    *   `--color-brand-red-dark` (`#be123c`): สีแดงเข้ม ใช้เมื่อผู้ใช้กดปุ่มค้าง (Hover/Active) หรือไอคอนสถานะสำคัญ
+    *   `--color-brand-red-light` (`#fff1f2`): สีชมพูอ่อนมาก ใช้เป็นพื้นหลังกล่องแจ้งเตือน หรือพื้นหลังแท็กโปรโมชันย่อย
+    *   `--color-brand-red-muted` (`#fda4af`): สีแดงหม่น ใช้กับเส้นขอบ หรือสถานะคอมโพเนนต์ที่ยังไม่พร้อมใช้งาน (Disabled)
+*   **System Canvas (กลุ่มสีพื้นหลังและตัวอักษร):**
+    *   `--color-bg-slate` / `--background` (`#f8fafc`): สีเทาอมฟ้าอ่อนมาก ให้ความรู้สึกคลีน ปลอดภัย และน่าเชื่อถือตามมาตรฐานแอปพลิเคชันทางการเงิน (FinTech)
+    *   `--foreground` / `color` (`#0f172a`): สีดำอมกรมท่าเข้ม ใช้สำหรับตัวหนังสือและหัวข้อทั้งหมดเพื่อให้ตัดกับพื้นหลังอย่างชัดเจน อ่านง่ายบนหน้าจอมือถือ
 
-## Learn More
+### 2. Motion & Custom Effects (ระบบเคลื่อนไหวและเอฟเฟกต์พิเศษ)
+แอปพลิเคชันมีการนำเสนอ Micro-interactions ผ่าน CSS Classes พิเศษ เพื่อยกระดับประสบการณ์ใช้งาน (UX):
 
-To learn more about Next.js, take a look at the following resources:
+*   **`.active-border-pulse` (ป้ายโปรโมชันเรืองแสง):** แอนิเมชันเส้นขอบสีแดงกะพริบเป็นจังหวะเบาๆ (`pulse-border`) ทำหน้าที่เป็นตัวดึงสายตาผู้ใช้งาน (Visual Anchor) ไปยังการ์ดกิจกรรมหรือแบนเนอร์ส่วนลดพิเศษ เพื่อกระตุ้นอัตราการคลิก (Click-Through Rate)
+*   **`.glassmorphism` (กระจกโปร่งแสง):** การผสานฉากหลังขาวโปร่งแสงเข้ากับเอฟเฟกต์เบลอภาพ (`blur(8px)`) ใช้สำหรับแถบเมนูด้านบนและด้านล่าง (Bottom Navigation) เพื่อสร้างมิติความลึก (Depth) ให้แอปดูโมเดิร์นและพรีเมียม
+*   **`.animate-slide-up` (หน้าต่างสไลด์ถนอมสายตา):** แอนิเมชันสำหรับเปิดหน้าต่างตัวเลือกราคาเติมเงิน (Bottom Sheet) จากขอบจอด้านล่างภายในเวลา 0.3 วินาที เพื่อให้ประสบการณ์การสลับหน้าจอลื่นไหล ไม่ขัดสายตาผู้ใช้งาน
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧱 Key UI Components & UX Patterns
 
-## Deploy on Vercel
+*   **Search Bar:** ช่องค้นหาไอเทมเกม ขอบมนลึก `rounded-2xl` พร้อมการเยื้องตำแหน่งเนื้อหาเพื่อหลบไอคอนแว่นขยายอย่างเป็นระบบ
+*   **Game Display Cards:** การ์ดสไตล์ทูโทน (Two-Tone Layout) โดยส่วนบนดึงสีอัตลักษณ์ประจำเกมมาแสดงร่วมกับชื่อเกมสีขาวหนา และส่วนล่างตัดด้วยพื้นหลังสีขาวแสดงราคาชัดเจน
+*   **Interactive Bottom Sheets:** หน้าต่างเลือกรายการราคาที่ใช้เอฟเฟกต์ `.glassmorphism` ผสานร่วมกับแอนิเมชัน `.animate-slide-up` เพื่อแสดงผลทับหน้าหลักโดยไม่ต้องเปลี่ยนหน้าเว็บใหม่
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 How to Run the Project (วิธีการเปิดรหัสและรันโปรเจกต์)
+
+### Prerequisites
+*   Node.js (เวอร์ชัน 18 ขึ้นไป)
+*   npm 
+
+### Installation Steps
+1. ทำการติดตั้ง Dependencies ทั้งหมดภายในโปรเจกต์:
+   ```bash
+   npm install
+   ```
+
+2. เริ่มต้นรันโปรเจกต์ในโหมดพัฒนา (Development Mode):
+   ```bash
+   npm run dev
+   ```
+
+3. เปิดเบราว์เซอร์ไปที่ลิงก์ที่แสดงบนเทอร์มินอล (เช่น `http://localhost:3000`) เพื่อเข้าชมหน้าตาแอปพลิเคชัน
